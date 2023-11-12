@@ -17,3 +17,8 @@ La documentación de este tema está disponible en el Moodle del curso, aunque t
  ### Conocimientos principales
 
  - [Programación Orientada a Objetos en Python](https://sharp-voice-0ff.notion.site/POO-en-Python-0fd7295475344d1aa5b518e295fd1eb1?pvs=4)
+
+
+#### Ejemplos de los conceptos principales del tema
+
+- [Ejemplos de Programación Orientada a Objetos en Python](./Example/Example_E01.ipynb)
