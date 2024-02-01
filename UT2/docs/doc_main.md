@@ -1,4 +1,4 @@
-# Trabajo con ficheros en Python
+# Gestión y manejo de ficheros
 
 
 En este tema vamos estudiar como trabajar con ficheros en Python. 
