@@ -245,6 +245,59 @@ tree('mydir/')
 ...
 ```
 
+<details>
+<summary>Ejemplo comando Tree</summary> 
+
+```python
+import os
+
+
+class TreeOptions:
+    def __init__(self, level_maximo=0, processHidden=True):
+        self.level_maximo = level_maximo
+        self.processHidden = processHidden
+
+
+def tree_with_options(path: str, nivel_profundidad=0, options: TreeOptions = TreeOptions()):
+    for elemento in os.scandir(path):
+        alcanzadoNivelProfundidadMaximo = options.level_maximo > 0 and nivel_profundidad >= options.level_maximo
+
+        processDirectory = True
+        if alcanzadoNivelProfundidadMaximo:
+            processDirectory = False
+
+        if processDirectory and elemento.name.startswith(".") and options.processHidden == True:
+            # Si es oculto y no se procesan los ocultos
+            processDirectory = False
+
+        if elemento.is_dir() and processDirectory:
+            print(f"{'|__' * nivel_profundidad} {elemento.name}")
+            tree(elemento.path, nivel_profundidad + 1, options.level_maximo)
+        else:
+            if not elemento.name.startswith("."):
+                print(f"{' ' * nivel_profundidad} -- {elemento.name}")
+
+
+def tree(path: str, nivel_profundidad=0, level_maximo=0, processHidden=False):
+    for elemento in os.scandir(path):
+        alcanzadoNivelProfundidadMaximo = level_maximo > 0 and nivel_profundidad >= level_maximo
+        if elemento.is_dir() and not elemento.name.startswith(".") and not alcanzadoNivelProfundidadMaximo:
+            print(f"{'|__' * nivel_profundidad} {elemento.name}")
+            tree(elemento.path, nivel_profundidad + 1, level_maximo)
+        else:
+            if not elemento.name.startswith("."):
+                print(f"{' ' * nivel_profundidad} -- {elemento.name}")
+
+
+if __name__ == '__main__':
+    # 1º Alternativa con opciones pasadas como parámetros
+    tree('/home/profesor', level_maximo=2)
+    # 2º Alternativa con clase Options que contiene los parámetros
+    options = TreeOptions(2, processHidden=False)
+    tree_with_options('/home/profesor/snap', options=options)
+```
+</details>
+
 ## Obtener los atributos de los ficheros
 
 El módulo `os` proporciona funciones para obtener los atributos de los ficheros y directorios.
