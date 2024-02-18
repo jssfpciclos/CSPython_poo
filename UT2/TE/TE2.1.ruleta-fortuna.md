@@ -198,7 +198,7 @@ Se aplicará la siguiente rúbrica para la evaluación de la tarea:
   - Funcionamiento:
     - El juego debe funcionar correctamente, sin errores.
     - 
-- **(1 pto)** 
+- **(1.5 pto)** 
   - Uso de modulos y paquetes
     - Un archivo main que importe los modulos necesarios para el juego.
     - El código está organizado en módulos,
@@ -207,11 +207,14 @@ Se aplicará la siguiente rúbrica para la evaluación de la tarea:
 - **(1 pto)**
   - Se implementa el uso de Jugador Computadora
   
-- **(1 pto)**
+- **(2 pto)**
   - Las frases, categorias y pistas se leen de un fichero.
   
 - **(0.5 pto)**
   - Se utilizan enumerados en el desarrollo del juego.
-   
-- **(1.5 pto)**
+
+
+Extra (puntos extra):
+
+- **(1 pto)**
   - Se permite guardar la partida en un fichero, y cargarla posteriormente, dando la opción al usuario de continuar la partida o empezar una nueva.
