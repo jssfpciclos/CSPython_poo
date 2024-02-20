@@ -219,16 +219,16 @@ Extra (puntos extra):
 
 ## Funcionamiento del Juego
 
-Comienzo del juego
+Comienzo del juego<br>
 <img src="img/01-juego-final.gif" width="600px">
 
-Evolución (elige vocal, elige consonante, resuelve)
+Evolución (elige vocal, elige consonante, resuelve)<br>
 <img src="img/02-juego-final.gif" width="600px">
 
-Evolución (letra no encontrada, pierde turno, pasa)
+Evolución (letra no encontrada, pierde turno, pasa)<br>
 <img src="img/03-juego-final.gif" width="600px">
 
-Final
+Final<br>
 <img src="img/04-juego-final.gif" width="600px">
 
 ## Anexo
