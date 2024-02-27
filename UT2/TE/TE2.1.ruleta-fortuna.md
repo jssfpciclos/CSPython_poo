@@ -235,7 +235,7 @@ Final<br>
 
 **Diagrama clases y flujo**
 
-<img src="https://github.com/jssfpciclos/CSPython_poo/assets/72703706/2e3548e3-2043-473e-b1c7-b4bf279d9741" width="600px">
+<img src="https://github.com/jssfpciclos/CSPython_poo/assets/72703706/2e3548e3-2043-473e-b1c7-b4bf279d9741">
 
 ## Anexo II
 
