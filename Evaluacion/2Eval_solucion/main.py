@@ -16,6 +16,8 @@ def testBuildPlayers(numPlayers: int = 2):
 
     raise Exception("Número de jugadores no contralado")
 
+def testRound():
+
 
 def testInitGame():
     playerSimulated = testBuildPlayers(numPlayers=2)

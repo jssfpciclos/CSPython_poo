@@ -1,17 +1,19 @@
 # Se puede importar clases y metodos de otros archivos
 # como si se tratase de librerias como math o random
 from .Phrase import Phrase
-from .player import Player
+from .constantes import Constantes
+from .player import *
 from .ruleta import Ruleta, PremioTipoEnum
 
 
 class RoundGame:
     # constructior de la clase Roundgame
-    def __init__(self, numRonda: int, players: list[Player], frase: Phrase, jugadorInicio: Player):
+    def __init__(self, numRonda: int, players: list[Player], panel: Phrase, jugadorInicio: Player):
         self.players = players
         self.numRound = numRonda
-        self.frase = frase
+        self.panel = panel
         self.jugadorInicio = jugadorInicio
+        self.letrasDichas = []
 
     # Funcion playRound muestra el jugador que ha ganado la ronda
     # y pasa el turno al siguiente jugador del juego
@@ -41,6 +43,7 @@ class RoundGame:
 
         # Repetir tantas veces como tiradas haga el jugador, mientras mantenga el turno
         while True:
+            self.showTurnInfo(jugador)
             (tipoPremio, casilla) = Ruleta.girar()
 
             match tipoPremio:
@@ -56,11 +59,45 @@ class RoundGame:
                 case PremioTipoEnum.PREMIO:
                     tipoMovimiento = jugador.goMove()
                     match tipoMovimiento:
+                        case JugadorTipoMovientoEnum.RESOLVER:
+                            jugador.goResolver(self.panel.frase)
+                            # Incrementar al dinero de la ronda la recompensa
+                            return True
 
+                        case JugadorTipoMovientoEnum.PASO:
+                            return False
 
+                        case JugadorTipoMovientoEnum.LETRA:
 
+                            letra = ""
+                            while True:
+                                letra = jugador.goGuestLetter()
+                                # Validación de si es posible esa letra
 
+                                # 1. Si es vocal, y no tiene saldo, invalido
+                                if letra in Constantes.VOCALES and jugador.prizeMoneyRound < Constantes.VOCAL_PRECIO:
+                                    print(" X no puede elegir Vocal, saldo insuficiente.")
+                                    continue
 
+                                # 2. Si letra ya dicha, invalido
+                                if letra in self.letrasDichas:
+                                    print(f" X no puede elegir la letra {letra}, ya ha sido elegida anteriormente.")
+                                    continue
+
+                                # 3. Si letra no existe en panel, Pierde Turno
+                                if letra not in self.panel.frase:
+                                    print(f" X La letra no está en la frase. Pierde turno")
+                                    return False
+
+                                break  # Letra es válida. Salgo del While
+
+                            # Saber cuantas veces la letra está dentro del panel
+                            ocurrencias = self.panel.frase.count(letra)
+                            premio_tirada = ocurrencias * casilla
+
+                            jugador.addPrizeRound(premio_tirada)
+
+                            # El turno continua, hasta salir del While
 
     # Funcion __calculateNextPlayerTurn que averigua la posicion en la lista del jugador
     def __calculateNextPlayerTurn(self, playerActual: Player):
@@ -71,14 +108,31 @@ class RoundGame:
 
         return self.players[indexPlayerActual + 1]
 
+    def __oscurecerFrase(self, frase: str, letrasDichas: list[str]):
+        fraseOscurecida = ""
+        for letra in frase:
+            letraOculta = ""
+            if letra in letrasDichas:
+                letraOculta = letra
+            else:
+                if letra in Constantes.ABECEDARIO:
+                    letraOculta = "_"
+
+            fraseOscurecida += letraOculta
+
+        return " ".join(fraseOscurecida)
+
     def loadPanel(self):
         pass
 
     def showInfo(self):
         pass
 
-    def showTurnInfo(self):
-        pass
+    def showTurnInfo(self, jugadorTurno: Player):
+
+        print(f" --------- TURNO DE {jugadorTurno.name} ----------------------")
+        print(f"           Dinero acumulado en ronda: {jugadorTurno.prizeMoneyRound:.2f}\n")
+        print(f"           {self.__oscurecerFrase(self.panel.frase, self.letrasDichas)}      Letras Dichas: [{self.letrasDichas}]")
 
     def solvePanel(self):
         pass

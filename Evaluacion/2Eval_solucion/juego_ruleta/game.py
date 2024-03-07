@@ -65,13 +65,12 @@ class Game:
             ronda = RoundGame(numRonda,self.players,frase,playerIniciaRonda)
             playerIniciaRonda = ronda.playRound()
 
-        # MOSTRAR EL GANADOR
-
     def __endGame(self):
         """
         Encargado de finalizar el juego
         :return:
         """
+        # MOSTRAR EL GANADOR
 
     def loadGame(self):
         pass

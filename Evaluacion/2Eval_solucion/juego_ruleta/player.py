@@ -9,6 +9,11 @@ class TipoJugadorEnum(IntEnum):
     EQUIPO = 3
 
 
+class JugadorTipoMovientoEnum(IntEnum):
+    LETRA = 0
+    RESOLVER = 1
+    PASO = 2
+
 class Player(ABC):  # Clase padre Player
     # constructor de la clase padre
     def __init__(self, name, tipo: TipoJugadorEnum):
@@ -40,8 +45,17 @@ class Player(ABC):  # Clase padre Player
         return f"{self.name} - Ronda:{self.prizeMoneyRound} Total:{self.prizeMoney}"
 
     @abstractmethod  # Metodo abstracto hay que importarlo de abc abstractmethod
-    def goMove(self):
+    def goMove(self) -> JugadorTipoMovientoEnum:
         pass
+
+    @abstractmethod  # Metodo abstracto hay que importarlo de abc abstractmethod
+    def goResolver(self, frase: str):
+        pass
+
+    @abstractmethod  # Metodo abstracto hay que importarlo de abc abstractmethod
+    def goGuestLetter(self):
+        pass
+
 
 
 class HumanPlayer(Player):  # Clase HumanPlayer con herencia de la clase Padre Player
@@ -49,32 +63,47 @@ class HumanPlayer(Player):  # Clase HumanPlayer con herencia de la clase Padre P
     def __init__(self, name: str):
         super().__init__(name, TipoJugadorEnum.HUMANO)
 
-    def goMove(self):
+    def goMove(self) -> JugadorTipoMovientoEnum:
 
         while True:
-            eleccion = input("Indique movimiento Letra(Enter), 1-Resolver, 2-Paso: ")
+            eleccion = input(">> Indique movimiento Letra(Enter), 1-Resolver, 2-Paso: ")
             match eleccion:
                 case "1":
                     # Resolver
-                    pass
+                    return JugadorTipoMovientoEnum.RESOLVER
                 case "2":
                     # paso
-                    pass
+                    return JugadorTipoMovientoEnum.PASO
                 case "":
                     # Indicar letra
-                    pass
+                    return JugadorTipoMovientoEnum.LETRA
 
                 case _:
                     # Opción no valida
                     print("  --- opción no válida. Vuelve a indicar una opción correcta")
 
+    def goResolver(self, frase: str):
+        frase_usuario = input(">> Indique la frase completa: ")
+
+        return frase_usuario.upper() == frase.upper()
+
+    def goGuestLetter(self):
+        pass
+
 
 class ComputerPlayer(Player):  # Clase ComputerPlayer con herencia de la clase Padre Player
+
     # constructor de la clase ComputerPlayer
     def __init__(self, name: str):
         super().__init__(name, TipoJugadorEnum.COMPUTADORA)
 
     def goMove(self):
+        pass
+
+    def goResolver(self, frase: str):
+        pass
+
+    def goGuestLetter(self):
         pass
 
 
@@ -85,3 +114,10 @@ class DuoPlayer(Player):
 
     def goMove(self):
         pass
+
+    def goResolver(self, frase: str):
+        pass
+
+    def goGuestLetter(self):
+        pass
+
