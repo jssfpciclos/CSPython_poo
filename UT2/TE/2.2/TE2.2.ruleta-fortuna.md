@@ -22,9 +22,9 @@ La partida se puede guardar tanto en formato CSV como JSON. El formato de guarda
   - PARTIDA_SAVE_FORMAT: Formato de guardado de la partida. (CSV o JSON)
 
 - Clases:
-  - Game: Añadir método inicialización stático que cargue la ronda desde diferentes parámetros. `Game.FromSavedGame()`
+  - Game: Agregar lógica para cargar el estado del juego desde un fichero.
   - Player: Añadir método inicialización stático que cargue la ronda desde diferentes parámetros. `Player.FromSavedPlayer()` -> Como es abstracta, se debe implementar en las clases hijas.
-  - RoundGame: Añadir método inicialización stático que cargue la ronda desde diferentes parámetros. `RoundGame.FromSavedRound()`
+  - RoundGame: Añadir método inicialización stático que cargue la ronda desde diferentes parámetros. `RoundGame.FromSavedRound()` (Aunque no es necesario, pero para practicar el patrón `ConstructorNombrado`)
 
 ### Objetivos
 
@@ -55,13 +55,10 @@ Los puntos que debe tener el fichero son los siguientes:
 
 Datos oligatorios a guardar:
 
-- Nº de Rondas del juego
 - Nombre del jugador
 - Dinero acumulado del jugador, tanto a nivel de la ronda como total.
 - Nº de Ronda actual
 - Frase actual de la ronda
-- Letras ya dichas
-- Letras acertadas (para mostrar la frase oculta)
 - Turno del jugador
 
 ### Métodos
