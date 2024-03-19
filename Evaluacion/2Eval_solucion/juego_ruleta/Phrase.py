@@ -203,7 +203,7 @@ class Phrase:
 
     def __init__(self, categoria: str, nombre: str, pista: str):
         self.categoria = categoria
-        self.frase = nombre
+        self.frase = nombre.upper()
         self.pista = pista
 
     @staticmethod

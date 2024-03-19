@@ -14,6 +14,7 @@ class JugadorTipoMovientoEnum(IntEnum):
     RESOLVER = 1
     PASO = 2
 
+
 class Player(ABC):  # Clase padre Player
     # constructor de la clase padre
     def __init__(self, name, tipo: TipoJugadorEnum):
@@ -57,7 +58,6 @@ class Player(ABC):  # Clase padre Player
         pass
 
 
-
 class HumanPlayer(Player):  # Clase HumanPlayer con herencia de la clase Padre Player
     # Constructor de la clase HumanPlayer
     def __init__(self, name: str):
@@ -88,7 +88,9 @@ class HumanPlayer(Player):  # Clase HumanPlayer con herencia de la clase Padre P
         return frase_usuario.upper() == frase.upper()
 
     def goGuestLetter(self):
-        pass
+
+        letra = input("  Indique una letra: ")
+        return letra.upper()
 
 
 class ComputerPlayer(Player):  # Clase ComputerPlayer con herencia de la clase Padre Player
@@ -120,4 +122,3 @@ class DuoPlayer(Player):
 
     def goGuestLetter(self):
         pass
-
