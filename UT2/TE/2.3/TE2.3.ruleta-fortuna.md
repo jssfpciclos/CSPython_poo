@@ -55,11 +55,10 @@ class Config:
 
     @staticmethod
     def loadConfig(filename):
-        # modificar las propiedades de la clase con los valores del fichero de configuración
 
-        # si fichero existe, sino nada
+        
         if os.path.exists(filename):
-
+            # Si el fichero existe, se carga con los valores contenidos dentro del fichero
             with open(filename, 'r') as file:
                 config = yaml.load(file, Loader=yaml.FullLoader)
 
@@ -77,6 +76,7 @@ class Config:
                                                            defaultValue=Constantes.PARTIDA_SAVE_FORMATO)
 
         else:
+            # Si el fichero no existe, se crea con la configuración de las variables de la clase
             Config.saveConfig(filename)
 
 
@@ -103,7 +103,7 @@ class Config:
 
 
     @staticmethod
-    def __getValue(values, key, defaultValue):
+    def __getValue(values, key, defaultValue):    
 
         keys = key.split('.')
         if len(keys) == 1:
