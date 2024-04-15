@@ -8,13 +8,19 @@ Un ORM (Object-Relational Mapping) es una técnica de programación que permite 
 
 ## Indice
 
-- [Ficheros INI](#ficheros-ini)
-  - [ConfigParser](#configparser)
-    - [Escribir ficheros INI](#escribir-ficheros-ini)
-- [Ficheros YAML](#ficheros-yaml)
-  - [PyYAML](#pyyaml)
-- [Ficheros JSON](#ficheros-json)
-- [Ficheros XML](#ficheros-xml)
+- [ORM (Object-Relational Mapping)](#orm-object-relational-mapping)
+  - [Indice](#indice)
+  - [Introducción](#introducción)
+    - [Qué es un ORM](#qué-es-un-orm)
+    - [Popular ORM en Python](#popular-orm-en-python)
+    - [Ventajas y Desventajas de ORM](#ventajas-y-desventajas-de-orm)
+      - [Ventajas](#ventajas)
+      - [Desventajas](#desventajas)
+  - [PEEWEE](#peewee)
+    - [Siguientes pasos](#siguientes-pasos)
+    - [Ejemplo de uso](#ejemplo-de-uso)
+    - [Referencias](#referencias)
+    - [Ejemplos](#ejemplos)
 
 ## Introducción
 
@@ -66,5 +72,29 @@ Carácterísticas de Peewee:
 - Cientos de extensiones.
 
 
-### Inicio rápido
+### Siguientes pasos
 
+Para continuar aprendiendo sobre Peewee, lo mejor es comenzar por la documentación oficial que está en constante actualización.
+[Documentación oficial de Peewee](http://docs.peewee-orm.com/en/latest/index.html)
+
+
+### Ejemplo de uso
+
+
+
+
+
+
+
+
+
+
+### Referencias
+
+- [Documentación oficial de Peewee](http://docs.peewee-orm.com/en/latest/index.html)
+
+
+### Ejemplos
+
+- [Cómo hacer bases de datos con PeeWee](https://www.paradigmadigital.com/dev/como-hacer-bases-datos-con-peewee/)
+- [Peewee ORM Tutorial](https://zetcode.com/python/peewee/?utm_content=cmp-true)
