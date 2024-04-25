@@ -20,14 +20,16 @@ Para esto se requiere modelar las tablas necesarias y crear las relaciones entre
 
 El modelo de datos a implementar es el siguiente:
 
-**Modelo Jugador**
+**Modelo PlayerModel**
 
 Datos que se requieren de un jugador:
 
 - Nombre
 - Nick  (El nick debe ser único)
 
-**Modelo Partida**
+- Partidas (Relación con el modelo Partida) 
+
+**Modelo GameModel**
 
 Una partida se debe almacenar la siguiente información:
 
@@ -39,6 +41,15 @@ Una partida se debe almacenar la siguiente información:
 - Jugadores (Relación con el modelo Jugador)
 
 
+**Modelo GamePlayerModel**
+
+Donde se almacena la relación entre la partida y los jugadores que han participado en ella.
+
+Además de la relación, se debe guardar el dinero que ha ganado cada jugador en la partida.
+
+- Partida (Relación con el modelo Partida)
+- Player (Relación con el modelo Jugador)
+
 **Modelo Ronda**
 
 Una ronda se debe almacenar la siguiente información:
@@ -48,6 +59,15 @@ Una ronda se debe almacenar la siguiente información:
 - Ganador (Relación con el modelo Jugador)
 - Frase (Relación con el modelo Frase)
 - Partida (Relación con el modelo Partida)
+
+**Modelo Frase**
+
+En este modelo se deben almacenar las frases que se van a utilizar en el juego.
+
+- Categoria
+- Pista
+- frase
+
 
 
 ### Objetivos
