@@ -5,11 +5,9 @@
 Un ORM (Object-Relational Mapping) es una técnica de programación que permite a los desarrolladores de software trabajar con bases de datos relacionales utilizando objetos en lugar de sentencias SQL. Un ORM mapea las tablas de una base de datos a clases de un lenguaje de programación, y las filas de las tablas a objetos de las clases.
 
 <!-- omit in toc -->
-
 ## Indice
 
 - [ORM (Object-Relational Mapping)](#orm-object-relational-mapping)
-  - [Indice](#indice)
   - [Introducción](#introducción)
     - [Qué es un ORM](#qué-es-un-orm)
     - [Popular ORM en Python](#popular-orm-en-python)
