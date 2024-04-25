@@ -22,24 +22,10 @@ class Pet(Model):
         database = db
 
 
-class Frase(Model):
-    categoria = CharField()
-    frase = CharField()
-    pista = CharField()
-
-    def __init__(self, categoria: str, nombre: str, pista: str, *args, **kwargs):
-        super().__init__(*args, categoria=categoria,frase=nombre,pista=pista)
-
-    class Meta:
-        database = db
-
 def create_tables():
-    db.create_tables([Person, Pet, Frase])
+    db.create_tables([Person, Pet])
 
 def init_data():
-    f1 = Frase(categoria="Refranes", pista="xx", nombre="esto es la frase")
-    f1.save()
-
     peter = Person(name='Peter', birthday=date(1960, 1, 15))
     peter.save()
 
@@ -55,18 +41,24 @@ def init_data():
     pet.save()
 
 
-
-
 def load_data():
-    p = Person.select().where(Person.name == 'Peter').get()
 
-    for pet in p.pets:
-        print(pet)
+    "Select * from person where birthday < date.today()"
+    lista_personas = Person.select()
+
+    for persona in lista_personas:
+        print(f"-----{persona.name} -----")
+        if len(persona.pets)>0:
+            # Esta personal tiene mascotas
+            for mascota in persona.pets:
+                print(f"La mascota {mascota.name} pertenece a {mascota.owner.name}")
+                print("")
+
 
 
 
 if __name__ == '__main__':
     # peter = Person(name='Peter', birthday=datetime.date(2005, 1, 1))
     # pet = Pet(name='lulu', animal_type='cat', owner=peter)
-    create_tables()
+    # create_tables()
     init_data()
