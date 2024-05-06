@@ -204,10 +204,11 @@ class Phrase:
         }
     ]
 
-    def __init__(self, categoria: str, nombre: str, pista: str):
+    def __init__(self, categoria: str, nombre: str, pista: str, model):
         self.categoria = categoria
         self.frase = nombre.upper()
         self.pista = pista
+        self.model = model
 
     @staticmethod
     def getPhrase(category: str = None) -> 'Phrase':
@@ -225,7 +226,7 @@ class Phrase:
 
         frase_model = random.choice(frases_candidatas)
 
-        return Phrase(frase_model.category, frase_model.frase, frase_model.pista)
+        return Phrase(frase_model.category, frase_model.frase, frase_model.pista, frase_model)
 
     @staticmethod
     def requestCategory() -> str:
